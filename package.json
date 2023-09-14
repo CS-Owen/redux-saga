@@ -1,7 +1,7 @@
 {
   "name": "redux-saga",
   "version": "2.0.0",
-  "prepare": "npm run build",
+  "prepare": "npm run build && npm run publish",
   "private": true,
   "workspaces": [
     "examples/*",
