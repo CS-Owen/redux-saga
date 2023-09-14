@@ -30,9 +30,6 @@ node_modules
 lib
 es
 
-# compiled umd js files
-dist
-
 # docs generated files
 _book
 .idea
