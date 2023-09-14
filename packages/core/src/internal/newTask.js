@@ -8,6 +8,7 @@ import * as sagaError from './sagaError'
 
 export default function newTask(env, mainTask, parentContext, parentEffectId, meta, isRoot, cont = noop) {
   let status = RUNNING
+  let done = false
   let taskResult
   let taskError
   let deferredEnd = null
@@ -73,6 +74,7 @@ export default function newTask(env, mainTask, parentContext, parentEffectId, me
       joiner.cb(result, isErr)
     })
     task.joiners = null
+    done = true;
   }
 
   function setContext(props) {
@@ -136,6 +138,7 @@ export default function newTask(env, mainTask, parentContext, parentEffectId, me
      */
     isCancelled: () => status === CANCELLED || (status === RUNNING && mainTask.status === CANCELLED),
     isAborted: () => status === ABORTED,
+    isDone: () => done,
     result: () => taskResult,
     error: () => taskError,
   }
